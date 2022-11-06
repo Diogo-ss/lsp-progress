@@ -1,4 +1,4 @@
-local function lsp_p()
+local function lsp_progress()
 	local icon = ': '
 	local n_msg = 'No LSP'
     local msg = string.format("%s %s", icon, n_msg)
@@ -10,10 +10,11 @@ local function lsp_p()
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return string.format(": %s", client.name)
+        return string.format("%s %s",icon, client.name)
       end
     end
     return msg
   end
 
-print('Plugin Carregado')
+print("%s", lsp_progress)
+
